@@ -1,0 +1,63 @@
+<config>
+  <number>1</number>
+  <string>Строка</string>
+  <list>
+	<number>1</number>
+	<number>2</number>
+	<number>3</number>
+  </list>
+  <dict>
+	<pair name="key1">
+	  <string>Значение1</string>
+	</pair>
+	<pair name="key2">
+	  <string>Значение2</string>
+	</pair>
+  </dict>
+  <constant name="a">10</constant>
+  <list>
+	<list>
+		<number>0</number>
+		<number>1</number>
+	</list>
+	<list>
+		<number>2</number>
+		<number>3</number>
+	</list>
+  </list>
+  <comment>2+a+4</comment>
+  <number>2+a+4</number>
+  <constant name="list1">
+	<list>
+		<string>Line3</string>
+		<string>Line2</string>
+		<string>Line1</string>
+	</list>
+  </constant>
+  <comment>Размер list1</comment>
+  <number>len(list1)</number>
+  <comment>Сортировка списка</comment>
+  <list>sort(list1)</list>
+  <constant name="dict1">
+    <dict>
+	<pair name="567">
+	  <string>Значение1</string>
+	</pair>
+	<pair name="123">
+	  <string>Значение2</string>
+	</pair>
+  </dict>
+  </constant>
+  <constant name="dict2">
+    <dict>
+	<pair name="234">
+	  <string>Значение3</string>
+	</pair>
+	<pair name="456">
+	  <string>Значение4</string>
+	</pair>
+  </dict>
+  </constant>
+  <comment>Сложение словарей 1 и 2, их сортировка</comment>
+  <dict>sort(dict1+dict2)</dict>
+</config>

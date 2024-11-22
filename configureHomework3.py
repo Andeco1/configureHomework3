@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from xml.etree import ElementTree
 import re
 
 def is_valid_name(name):
@@ -8,10 +9,8 @@ def parse_constant(elem):
     name = elem.attrib['name']
     if not is_valid_name(name):
         raise ValueError(f"Invalid name: {name}")
-    
     if name in constants:
         return constants[name]  
-
     if elem.text and elem.text.strip():
         value = elem.text.strip()
         if value in constants:
@@ -20,7 +19,6 @@ def parse_constant(elem):
         value = None
         for sub_child in elem:
             value = parse(sub_child)
-
     constants[name] = value
     return f"{value} -> {name}"
 
@@ -115,13 +113,13 @@ def parse(elem):
         return parse_list(elem,sort)
     elif elem.tag == "dict":
         return parse_dict(elem,sort)
-    elif elem.tag == "comment":
+    elif elem.tag == ET.Comment:
         return parse_comment(elem) 
     else:
         return ""
 
 xml_input = "input.xml"
-tree = ET.parse(xml_input)
+tree = ET.parse(xml_input, parser=ElementTree.XMLParser(target=ElementTree.TreeBuilder(insert_comments=True)))
 constants = {}
 root = tree.getroot()
 
